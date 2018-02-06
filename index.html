@@ -27,11 +27,30 @@
       h1 {
         margin-top: 0;
         color: #4A4A4A;
+        line-height: 26px;
+        font-size: 26px
       }
+
+      h2 {
+        font-size: 16px;
+        color: #999;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+      }
+
+      #author{
+        font-size: 16px;
+        color: #666;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
       article {
         padding-bottom: 1em;
         margin-bottom: 2em;
         border-bottom: 1px solid #ccc;
+        margin-top: 2em;
       }
       textarea {
         display: block;
@@ -67,6 +86,11 @@
 
       }
 
+      li {
+        margin-bottom: 30px;
+      }
+
+
       button:after {
       	width: 0%;
       	height: 100%;
@@ -82,29 +106,33 @@
         border: 3px solid #fff;
       }
 
+      p {
+        line-height: 24px;
+      }
+
     </style>
   </head>
   <body>
     <main>
+      <h1>Say-it - Voice Commenting System</h1>
+      <h2>By  <a id="author"href="http://leonah.me/">Leona Hu Hudelson</a></h2>
       <article>
-        <h1>The Challenges of Programming</h1>
-
         <p>
-          Programming can be tough...
-          lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua.
+          Sayit is an experiment designed and built for <a href="https://www.onlinesosnetwork.org">Online SOS</a>. Online SOS is a non-profit organization that provides free legal and therapy services to victims of online harassment and bullying.
+          As social networks have evolved rapidly in the past decades from forums, to Myspace, and later to Facebook and Twiter. The commenting/feedback loop systems are since visual and text based.
+          The idea of Say-it is inspired by the Editor-in-Chief at MIT Tech Review, Jason Potin's article,  <a href="https://www.technologyreview.com/s/604083/me-and-my-troll/" target="_blank">Me and My Troll</a>.
+          Potin addresses in the article that most of news platforms experience severe trolling where users often leave thoughtless, misguiding, and sometime harmful comments to thoroughly written articles with factual information.
+          Say-it investigates a different interaction pattern by commenting with voice recordings. The assumption is based on following points
         </p>
 
         <ul>
-          <li>lorem</li>
-          <li>ipsum</li>
-          <li>dolor</li>
+          <li>Most of the commenting systems on social media sites such as Facebook and Twitter are text based. Text based comment threads have the most problems because of the anonymity of commenters. </li>
+          <li>Voice based commenting machnism will encourage social media users to be more civil since speaking requires participants' mental clarity and maturity.</li>
+
         </ul>
 
-
         <p>
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum.
+          Share your feedback with me <a href="mailto:hqleona@gmail.com?Subject=Say-it">here</a>.
         </p>
       </article>
 
@@ -114,11 +142,7 @@
       </div>
 
       <div id="comments">
-        <!--
-        <div class="comment">
-          You're looking good!
-        </div>
-        -->
+
       </div>
 
       <form id="new-comment">
