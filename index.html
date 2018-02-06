@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>Blog</title>
+    <title>Say-it </title>
 
     <style>
       @import url(https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic);
@@ -74,7 +74,14 @@
       textarea {
         font-size: inherit;
       }
-      button {
+
+
+      li {
+        margin-bottom: 30px;
+      }
+
+
+      .btn {
         border: 3px solid #fff;
         border-bottom-width: 2px;
         outline:none;
@@ -83,15 +90,9 @@
         background-color: #049cd8;
         padding: .5em 1em;
         cursor: pointer;
-
       }
 
-      li {
-        margin-bottom: 30px;
-      }
-
-
-      button:after {
+      .btn:after {
       	width: 0%;
       	height: 100%;
       	top: 0;
@@ -99,8 +100,8 @@
       	background-color: #ffffff;
       }
 
-      button:hover,
-      button:active {
+      .btn:hover,
+      .btn:active {
       	color: #0e83cd;
         background-color: #ffffff;
         border: 3px solid #fff;
@@ -112,6 +113,7 @@
 
     </style>
   </head>
+
   <body>
     <main>
       <h1>Say-it - Voice Commenting System</h1>
@@ -143,13 +145,60 @@
 
       <div id="comments">
 
-      </div>
 
-      <form id="new-comment">
-        <textarea id="new-comment-body" placeholder="Leave a comment..."></textarea>
-        <button type="submit">Comment</button>
-      </form>
+
+
+      <audio controls autoplay></audio>
+    		<script type="text/javascript" src="recorder.js"> </script>
+                    <fieldset><legend>Leave a Voice Comment</legend>
+    		<input class="btn" type="sumbit" onclick="startRecording()" type="button" value="start recording" />
+    		<input class="btn" type="sumbit" onclick="stopRecording()" type="button" value="stop recording and play" />
+                    </fieldset>
+    		<script>
+    			var onFail = function(e) {
+    				console.log('Rejected!', e);
+    			};
+
+    			var onSuccess = function(s) {
+    				var context = new webkitAudioContext();
+    				var mediaStreamSource = context.createMediaStreamSource(s);
+    				recorder = new Recorder(mediaStreamSource);
+    				recorder.record();
+
+    				// audio loopback
+    				// mediaStreamSource.connect(context.destination);
+    			}
+
+    			window.URL = window.URL || window.webkitURL;
+    			navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+    			var recorder;
+    			var audio = document.querySelector('audio');
+
+    			function startRecording() {
+    				if (navigator.getUserMedia) {
+    					navigator.getUserMedia({audio: true}, onSuccess, onFail);
+    				} else {
+    					console.log('navigator.getUserMedia not present');
+    				}
+    			}
+
+    			function stopRecording() {
+    				recorder.stop();
+    				recorder.exportWAV(function(s) {
+
+                                 	audio.src = window.URL.createObjectURL(s);
+    				});
+    			}
+    		</script>
+          </div>
+
     </main>
+
+
+
+
+
 
     <script>
       // like button
